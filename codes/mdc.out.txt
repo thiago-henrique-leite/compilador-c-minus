@@ -1,0 +1,153 @@
+ETAPA 01: Análise Léxica
+
+1: /* Um programa para calcular o mdc segundo o algoritmo de Euclides. */
+
+
+2: int gcd (int u, int v) { 
+INT ID OPARENT INT ID COMMA INT ID CPARENT OKEY 
+
+3:     if (v == 0) 
+IF OPARENT ID EQUAL NUM CPARENT 
+
+4:         return u ; 
+RETURN ID SEMICOLON 
+
+5:     else 
+ELSE 
+
+6:         return gcd(v,u-u/v*v); 
+RETURN ID OPARENT ID COMMA ID MINUS ID SLASH ID TIMES ID CPARENT SEMICOLON 
+
+7: }
+CKEY 
+
+9: void main(void) { 
+VOID ID OPARENT VOID CPARENT OKEY 
+
+10:     int x; 
+INT ID SEMICOLON 
+
+11:     int y;
+INT ID SEMICOLON 
+
+12:     x = input(); 
+ID ASSIGN ID OPARENT CPARENT SEMICOLON 
+
+13:     y = input(); 
+ID ASSIGN ID OPARENT CPARENT SEMICOLON 
+
+14:     output(gcd(x,y));
+ID OPARENT ID OPARENT ID COMMA ID CPARENT CPARENT SEMICOLON 
+
+15: }
+CKEY 
+
+ETAPA 02: Geração da Árvore Sintática
+
+    PrimitiveType int
+        Função: gcd
+            PrimitiveType int
+                Variável: u
+            PrimitiveType int
+                Variável: v
+            If
+                Operador: EQUAL
+                    Id: v
+                    Num: 0
+                Retorno
+                    Id: u
+                Retorno
+                    Chamada de Função: gcd
+                        Id: v
+                        Operador: MINUS
+                            Id: u
+                            Operador: TIMES
+                                Operador: SLASH
+                                    Id: u
+                                    Id: v
+                                Id: v
+        PrimitiveType void
+            Função: main
+                Void
+                PrimitiveType int
+                    Variável: x
+                PrimitiveType int
+                    Variável: y
+                Atribuição
+                    Id: x
+                    Chamada de Função: input
+                Atribuição
+                    Id: y
+                    Chamada de Função: input
+                Chamada de Função: output
+                    Chamada de Função: gcd
+                        Id: x
+                        Id: y
+
+
+ETAPA 03: Geração da Tabela de Símbolos
+
+ |   Nome   | Id   |   PrimitiveType |   Escopo  |  Tamanho |  Referenciado nas Linhas  
+ |------------------------------------------------------------------------------------
+ |  main    |  00  |  void           |  global   |  0       |  24 
+ |  u       |  01  |  int            |  gcd      |  1       |  17   19   21   21 
+ |  v       |  02  |  int            |  gcd      |  1       |  17   18   21   21   21 
+ |  x       |  03  |  int            |  main     |  1       |  25   27   29 
+ |  y       |  04  |  int            |  main     |  1       |  26   28   29 
+ |  gcd     |  00  |  int            |  global   |  0       |  17   21   29 
+ |-----------------------------------------------------------------------------------
+
+
+ETAPA 04: Análise Semântica
+
+Verificando tipos dos nós da árvore...
+Deu bom! Tipos estão corretos...
+
+
+ETAPA 05: Geração do Código Intermediário
+
+(FUN, int, gcd,  )
+(ARG, int, u, gcd)
+(ARG, int, v, gcd)
+(LOAD, t0, v,  )
+(LOAD, t1, 0,  )
+(EQUAL, t0, t1, t2)
+(IFF, t2, L0,  )
+(LOAD, t0, u,  )
+(RET, t0,  ,  )
+(GOTO, L1,  ,  )
+(LAB, L0,  ,  )
+(LOAD, t1, v,  )
+(PARAM, t1,  ,  )
+(LOAD, t3, u,  )
+(LOAD, t4, u,  )
+(LOAD, t5, v,  )
+(SLASH, t4, t5, t6)
+(LOAD, t4, v,  )
+(MUL, t6, t4, t5)
+(SUB, t3, t5, t4)
+(PARAM, t4,  ,  )
+(CALL, gcd, 2, t3)
+(RET, t3,  ,  )
+(LAB, L1,  ,  )
+(END, gcd,  ,  )
+(FUN, void, main,  )
+(ALLOC, x, main,  )
+(ALLOC, y, main,  )
+(LOAD, t0, x,  )
+(CALL, input, 0, t1)
+(ASSIGN, t0, t1,  )
+(STORE, x, t0,  )
+(LOAD, t0, y,  )
+(CALL, input, 0, t1)
+(ASSIGN, t0, t1,  )
+(STORE, y, t0,  )
+(LOAD, t0, x,  )
+(PARAM, t0,  ,  )
+(LOAD, t1, y,  )
+(PARAM, t1,  ,  )
+(CALL, gcd, 2, t2)
+(PARAM, t2,  ,  )
+(CALL, output, 1, t3)
+(END, main,  ,  )
+(HALT,  ,  ,  )

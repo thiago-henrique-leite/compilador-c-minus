@@ -1,0 +1,489 @@
+ETAPA 01: Análise Léxica
+
+1: /* Um programa para ordenação por seleção de uma matriz com dez elementos. */
+
+
+3: int x[10];
+INT ID OBRACKET NUM CBRACKET SEMICOLON 
+
+5: int minloc ( int a[], int low, int high )
+INT ID OPARENT INT ID OBRACKET CBRACKET COMMA INT ID COMMA INT ID CPARENT 
+
+6: {
+OKEY 
+
+7:   int i; int x; int k;
+INT ID SEMICOLON INT ID SEMICOLON INT ID SEMICOLON 
+
+8:   k = low;
+ID ASSIGN ID SEMICOLON 
+
+9:   x = a[low];
+ID ASSIGN ID OBRACKET ID CBRACKET SEMICOLON 
+
+10:   i = low + 1;
+ID ASSIGN ID PLUS NUM SEMICOLON 
+
+11:   while (i < high)
+WHILE OPARENT ID LT ID CPARENT 
+
+12:   {
+OKEY 
+
+13:     if (a[i] < x)
+IF OPARENT ID OBRACKET ID CBRACKET LT ID CPARENT 
+
+14:     {
+OKEY 
+
+15:       x = a[i];
+ID ASSIGN ID OBRACKET ID CBRACKET SEMICOLON 
+
+16:       k = i;
+ID ASSIGN ID SEMICOLON 
+
+17:       i = i + 1;
+ID ASSIGN ID PLUS NUM SEMICOLON 
+
+18:     }
+CKEY 
+
+19:   }
+CKEY 
+
+21:   return k;
+RETURN ID SEMICOLON 
+
+22: }
+CKEY 
+
+24: void sort( int a[], int low, int high)
+VOID ID OPARENT INT ID OBRACKET CBRACKET COMMA INT ID COMMA INT ID CPARENT 
+
+25: {
+OKEY 
+
+26:   int i; int k;
+INT ID SEMICOLON INT ID SEMICOLON 
+
+27:   i = low;
+ID ASSIGN ID SEMICOLON 
+
+28:   while (i < high-1)
+WHILE OPARENT ID LT ID MINUS NUM CPARENT 
+
+29:   {
+OKEY 
+
+30:     int t;
+INT ID SEMICOLON 
+
+31:     k = minloc(a,i,high);
+ID ASSIGN ID OPARENT ID COMMA ID COMMA ID CPARENT SEMICOLON 
+
+32:     t = a[k];
+ID ASSIGN ID OBRACKET ID CBRACKET SEMICOLON 
+
+33:     a[k] = a[i];
+ID OBRACKET ID CBRACKET ASSIGN ID OBRACKET ID CBRACKET SEMICOLON 
+
+34:     a[i] = t;
+ID OBRACKET ID CBRACKET ASSIGN ID SEMICOLON 
+
+35:     i = i + 1;
+ID ASSIGN ID PLUS NUM SEMICOLON 
+
+36:   }
+CKEY 
+
+37: }
+CKEY 
+
+39: void main(void) 
+VOID ID OPARENT VOID CPARENT 
+
+40: {
+OKEY 
+
+41:   int i;
+INT ID SEMICOLON 
+
+42:   i = 0;
+ID ASSIGN NUM SEMICOLON 
+
+43:   while (i < 10) 
+WHILE OPARENT ID LT NUM CPARENT 
+
+44:   {
+OKEY 
+
+45:     x[i] = input();
+ID OBRACKET ID CBRACKET ASSIGN ID OPARENT CPARENT SEMICOLON 
+
+46:     i = i + 1;
+ID ASSIGN ID PLUS NUM SEMICOLON 
+
+47:     sort(x,0,10);
+ID OPARENT ID COMMA NUM COMMA NUM CPARENT SEMICOLON 
+
+48:     i = 0;
+ID ASSIGN NUM SEMICOLON 
+
+49:     while (i < 10)
+WHILE OPARENT ID LT NUM CPARENT 
+
+50:     {
+OKEY 
+
+51:       output(x[i]);
+ID OPARENT ID OBRACKET ID CBRACKET CPARENT SEMICOLON 
+
+52:       i = i + 1;
+ID ASSIGN ID PLUS NUM SEMICOLON 
+
+53:     }
+CKEY 
+
+54:   }
+CKEY 
+
+55: }CKEY 
+
+ETAPA 02: Geração da Árvore Sintática
+
+    PrimitiveType int
+        Variável: x
+            Num: 10
+        PrimitiveType int
+            Função: minloc
+                PrimitiveType int
+                    Variável: a
+                PrimitiveType int
+                    Variável: low
+                PrimitiveType int
+                    Variável: high
+                PrimitiveType int
+                    Variável: i
+                PrimitiveType int
+                    Variável: x
+                PrimitiveType int
+                    Variável: k
+                Atribuição
+                    Id: k
+                    Id: low
+                Atribuição
+                    Id: x
+                    Id: a
+                        Id: low
+                Atribuição
+                    Id: i
+                    Operador: PLUS
+                        Id: low
+                        Num: 1
+                While
+                    Operador: LT
+                        Id: i
+                        Id: high
+                    If
+                        Operador: LT
+                            Id: a
+                                Id: i
+                            Id: x
+                        Atribuição
+                            Id: x
+                            Id: a
+                                Id: i
+                        Atribuição
+                            Id: k
+                            Id: i
+                        Atribuição
+                            Id: i
+                            Operador: PLUS
+                                Id: i
+                                Num: 1
+                Retorno
+                    Id: k
+            PrimitiveType void
+                Função: sort
+                    PrimitiveType int
+                        Variável: a
+                    PrimitiveType int
+                        Variável: low
+                    PrimitiveType int
+                        Variável: high
+                    PrimitiveType int
+                        Variável: i
+                    PrimitiveType int
+                        Variável: k
+                    Atribuição
+                        Id: i
+                        Id: low
+                    While
+                        Operador: LT
+                            Id: i
+                            Operador: MINUS
+                                Id: high
+                                Num: 1
+                        PrimitiveType int
+                            Variável: t
+                        Atribuição
+                            Id: k
+                            Chamada de Função: minloc
+                                Id: a
+                                Id: i
+                                Id: high
+                        Atribuição
+                            Id: t
+                            Id: a
+                                Id: k
+                        Atribuição
+                            Id: a
+                                Id: k
+                            Id: a
+                                Id: i
+                        Atribuição
+                            Id: a
+                                Id: i
+                            Id: t
+                        Atribuição
+                            Id: i
+                            Operador: PLUS
+                                Id: i
+                                Num: 1
+                PrimitiveType void
+                    Função: main
+                        Void
+                        PrimitiveType int
+                            Variável: i
+                        Atribuição
+                            Id: i
+                            Num: 0
+                        While
+                            Operador: LT
+                                Id: i
+                                Num: 10
+                            Atribuição
+                                Id: x
+                                    Id: i
+                                Chamada de Função: input
+                            Atribuição
+                                Id: i
+                                Operador: PLUS
+                                    Id: i
+                                    Num: 1
+                            Chamada de Função: sort
+                                Id: x
+                                Num: 0
+                                Num: 10
+                            Atribuição
+                                Id: i
+                                Num: 0
+                            While
+                                Operador: LT
+                                    Id: i
+                                    Num: 10
+                                Chamada de Função: output
+                                    Id: x
+                                        Id: i
+                                Atribuição
+                                    Id: i
+                                    Operador: PLUS
+                                        Id: i
+                                        Num: 1
+
+
+ETAPA 03: Geração da Tabela de Símbolos
+
+ |   Nome   | Id   |   PrimitiveType |   Escopo  |  Tamanho |  Referenciado nas Linhas  
+ |------------------------------------------------------------------------------------
+ |  low     |  09  |  int            |  sort     |  1       |  78   81 
+ |  low     |  03  |  int            |  minloc   |  1       |  59   62   63   64 
+ |  main    |  00  |  void           |  global   |  0       |  93 
+ |  sort    |  00  |  void           |  global   |  0       |  78  101 
+ |  minloc  |  00  |  int            |  global   |  0       |  59   85 
+ |  a       |  08  |  array          |  sort     |  1       |  78   85   86   87   87   88 
+ |  a       |  02  |  array          |  minloc   |  1       |  59   63   67   69 
+ |  i       |  14  |  int            |  main     |  1       |  95   96   97   99  100  100  102  103  105  106  106 
+ |  i       |  11  |  int            |  sort     |  1       |  80   81   82   85   87   88   89   89 
+ |  i       |  05  |  int            |  minloc   |  1       |  61   64   65   67   69   70   71   71 
+ |  k       |  12  |  int            |  sort     |  1       |  80   85   86   87 
+ |  k       |  07  |  int            |  minloc   |  1       |  61   62   70   75 
+ |  t       |  13  |  int            |  sort     |  1       |  84   86   88 
+ |  x       |  06  |  int            |  minloc   |  1       |  61   63   67   69 
+ |  x       |  01  |  array          |  global   |  10      |  57   99  101  105 
+ |  high    |  10  |  int            |  sort     |  1       |  78   82   85 
+ |  high    |  04  |  int            |  minloc   |  1       |  59   65 
+ |-----------------------------------------------------------------------------------
+
+
+ETAPA 04: Análise Semântica
+
+Verificando tipos dos nós da árvore...
+Deu bom! Tipos estão corretos...
+
+
+ETAPA 05: Geração do Código Intermediário
+
+(ALLOC, x, global, 10)
+(FUN, int, minloc,  )
+(ARG, array, a, minloc)
+(ARG, int, low, minloc)
+(ARG, int, high, minloc)
+(ALLOC, i, minloc,  )
+(ALLOC, x, minloc,  )
+(ALLOC, k, minloc,  )
+(LOAD, t0, k,  )
+(LOAD, t1, low,  )
+(ASSIGN, t0, t1,  )
+(STORE, k, t0,  )
+(LOAD, t0, x,  )
+(LOAD, t1, low,  )
+(LOAD, t2, a, t1)
+(ASSIGN, t0, t2,  )
+(STORE, x, t0,  )
+(LOAD, t0, i,  )
+(LOAD, t2, low,  )
+(LOAD, t3, 1,  )
+(ADD, t2, t3, t4)
+(ASSIGN, t0, t4,  )
+(STORE, i, t0,  )
+(LAB, L0,  ,  )
+(LOAD, t0, i,  )
+(LOAD, t2, high,  )
+(LT, t0, t2, t3)
+(IFF, t4, L1,  )
+(LOAD, t0, i,  )
+(LOAD, t2, a, t1)
+(LOAD, t4, x,  )
+(LT, t2, t4, t5)
+(IFF, t5, L2,  )
+(LOAD, t2, x,  )
+(LOAD, t4, i,  )
+(LOAD, t6, a, t5)
+(ASSIGN, t2, t6,  )
+(STORE, x, t2,  )
+(LOAD, t2, k,  )
+(LOAD, t6, i,  )
+(ASSIGN, t2, t6,  )
+(STORE, k, t2,  )
+(LOAD, t2, i,  )
+(LOAD, t6, i,  )
+(LOAD, t7, 1,  )
+(ADD, t6, t7, t8)
+(ASSIGN, t2, t8,  )
+(STORE, i, t2,  )
+(GOTO, L3,  ,  )
+(LAB, L2,  ,  )
+(LAB, L3,  ,  )
+(GOTO, L0,  ,  )
+(LAB, L1,  ,  )
+(LOAD, t2, k,  )
+(RET, t2,  ,  )
+(END, minloc,  ,  )
+(FUN, void, sort,  )
+(ARG, array, a, sort)
+(ARG, int, low, sort)
+(ARG, int, high, sort)
+(ALLOC, i, sort,  )
+(ALLOC, k, sort,  )
+(LOAD, t0, i,  )
+(LOAD, t1, low,  )
+(ASSIGN, t0, t1,  )
+(STORE, i, t0,  )
+(LAB, L4,  ,  )
+(LOAD, t0, i,  )
+(LOAD, t1, high,  )
+(LOAD, t2, 1,  )
+(SUB, t1, t2, t3)
+(LT, t0, t3, t1)
+(IFF, t1, L5,  )
+(ALLOC, t, sort,  )
+(LOAD, t0, k,  )
+(LOAD, t2, a,  )
+(PARAM, t2,  ,  )
+(LOAD, t3, i,  )
+(PARAM, t3,  ,  )
+(LOAD, t4, high,  )
+(PARAM, t4,  ,  )
+(CALL, minloc, 3, t5)
+(ASSIGN, t0, t5,  )
+(STORE, k, t0,  )
+(LOAD, t0, t,  )
+(LOAD, t5, k,  )
+(LOAD, t6, a, t5)
+(ASSIGN, t0, t6,  )
+(STORE, t, t0,  )
+(LOAD, t0, k,  )
+(LOAD, t6, a, t5)
+(LOAD, t7, i,  )
+(LOAD, t8, a, t7)
+(ASSIGN, t6, t8,  )
+(STORE, a, t6, t5)
+(LOAD, t5, i,  )
+(LOAD, t6, a, t5)
+(LOAD, t8, t,  )
+(ASSIGN, t6, t8,  )
+(STORE, a, t6, t5)
+(LOAD, t5, i,  )
+(LOAD, t6, i,  )
+(LOAD, t8, 1,  )
+(ADD, t6, t8, t9)
+(ASSIGN, t5, t9,  )
+(STORE, i, t5,  )
+(GOTO, L4,  ,  )
+(LAB, L5,  ,  )
+(END, sort,  ,  )
+(FUN, void, main,  )
+(ALLOC, i, main,  )
+(LOAD, t0, i,  )
+(LOAD, t1, 0,  )
+(ASSIGN, t0, t1,  )
+(STORE, i, t0,  )
+(LAB, L6,  ,  )
+(LOAD, t0, i,  )
+(LOAD, t1, 10,  )
+(LT, t0, t1, t2)
+(IFF, t1, L7,  )
+(LOAD, t0, i,  )
+(LOAD, t1, x, t0)
+(CALL, input, 0, t3)
+(ASSIGN, t1, t3,  )
+(STORE, x, t1, t0)
+(LOAD, t0, i,  )
+(LOAD, t1, i,  )
+(LOAD, t3, 1,  )
+(ADD, t1, t3, t4)
+(ASSIGN, t0, t4,  )
+(STORE, i, t0,  )
+(LOAD, t0, x,  )
+(PARAM, t0,  ,  )
+(LOAD, t1, 0,  )
+(PARAM, t1,  ,  )
+(LOAD, t3, 10,  )
+(PARAM, t3,  ,  )
+(CALL, sort, 3, t4)
+(LOAD, t5, i,  )
+(LOAD, t6, 0,  )
+(ASSIGN, t5, t6,  )
+(STORE, i, t5,  )
+(LAB, L8,  ,  )
+(LOAD, t5, i,  )
+(LOAD, t6, 10,  )
+(LT, t5, t6, t7)
+(IFF, t6, L9,  )
+(LOAD, t5, i,  )
+(LOAD, t6, x, t5)
+(PARAM, t6,  ,  )
+(CALL, output, 1, t8)
+(LOAD, t9, i,  )
+(LOAD, t10, i,  )
+(LOAD, t11, 1,  )
+(ADD, t10, t11, t12)
+(ASSIGN, t9, t12,  )
+(STORE, i, t9,  )
+(GOTO, L8,  ,  )
+(LAB, L9,  ,  )
+(GOTO, L6,  ,  )
+(LAB, L7,  ,  )
+(END, main,  ,  )
+(HALT,  ,  ,  )
