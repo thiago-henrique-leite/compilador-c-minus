@@ -134,7 +134,7 @@ void make_symbol_table(FILE *output_file);
 
 /* Semantic Analysis */
 
-void make_semantic_analysis(FILE *out_file);
+void make_node_types_verify(FILE *out_file);
 
 /* Intermediary Code */
 

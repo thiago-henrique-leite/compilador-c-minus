@@ -237,7 +237,7 @@ static void exp_node(TreeNode *tree) {
                     list_insert(&intermediate_code, "ADD", allocate_register(reg_num_1), allocate_register(reg_num_2), allocate_register(n_tmp));
                     break;
                 case SLASH :
-                    list_insert(&intermediate_code, "SLASH", allocate_register(reg_num_1), allocate_register(reg_num_2), allocate_register(n_tmp));
+                    list_insert(&intermediate_code, "DIV", allocate_register(reg_num_1), allocate_register(reg_num_2), allocate_register(n_tmp));
                     break;
                 case TIMES :
                     list_insert(&intermediate_code, "MUL", allocate_register(reg_num_1), allocate_register(reg_num_2), allocate_register(n_tmp));

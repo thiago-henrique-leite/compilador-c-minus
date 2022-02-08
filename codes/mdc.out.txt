@@ -122,7 +122,7 @@ ETAPA 05: Geração do Código Intermediário
 (LOAD, t3, u,  )
 (LOAD, t4, u,  )
 (LOAD, t5, v,  )
-(SLASH, t4, t5, t6)
+(DIV, t4, t5, t6)
 (LOAD, t4, v,  )
 (MUL, t6, t4, t5)
 (SUB, t3, t5, t4)

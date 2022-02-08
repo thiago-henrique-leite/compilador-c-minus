@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     make_lexical_analysis(argv[1], out_file);
     make_syntax_tree(argv[1], out_file);
     make_symbol_table(out_file);
-    make_semantic_analysis(out_file);
+    make_node_types_verify(out_file);
     make_intermediate_code(out_file);
 
     return 0;

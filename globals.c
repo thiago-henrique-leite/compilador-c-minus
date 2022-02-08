@@ -373,7 +373,7 @@ void make_symbol_table(FILE *output_file) {
     }
 }
 
-void make_semantic_analysis(FILE *output_file) {
+void make_node_types_verify(FILE *output_file) {
     if(!error) {
         file_write(output_file, "\n\nETAPA 04: Análise Semântica\n\n");
         verify_node_types(syntax_tree, output_file);
